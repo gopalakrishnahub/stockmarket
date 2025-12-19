@@ -14,6 +14,12 @@ const TradeInfo = () => {
 
   //Historical Results
   const {quarter_results, yoy_results, balancesheet, cashflow, ratios, shareholding_pattern_quarterly, shareholding_pattern_yearly, profit_loss_stats} = historicalData
+  const qtrHeaders = Object.keys(quarter_results)
+  const tableHeaders = Object.keys(quarter_results.Sales)
+  const tableValues = Object.values(quarter_results)
+  //const qtrValues = Object.values(quarter_results) qtrHeaders,qtrHeaders,qtrValues
+  console.log(tableHeaders,tableValues);
+
   return (
     <>
       <div>
@@ -64,6 +70,30 @@ const TradeInfo = () => {
                 })}
                 </tbody>
             </table>
+        </div>
+        <div>
+          <table>
+            <thead>
+              <tr>
+              {tableHeaders.map((items)=>{
+                return(
+                  <>
+                  <th></th>
+                  <th>{items}</th>
+                  </>
+                )
+              })}
+              </tr>
+            </thead>
+            <tbody>
+              {qtrHeaders.map((items)=>{
+                return(
+                <tr key={items}>
+                  <th>{items}</th>
+                </tr>
+              )})}
+            </tbody>
+          </table>
         </div>
       </div>
     </>
